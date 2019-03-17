@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Windows.Threading;
 using sitk = itk.simple;
 using System.IO;
 
@@ -26,6 +27,26 @@ namespace KWDMpluca
         public MainWindow()
         {
             InitializeComponent();
+            // Wyświetlenie aplikacji na środku ekranu
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            // Wyświetlenie obrazków na przyciskach
+            InsertImage("image/Add.png", BAdd);
+            InsertImage("image/Search.png", BSearch);
+            InsertImage("image/Settings.png", BSettings);
+            InsertImage("image/print.png", BPrint);
+            
+        }
+        private void InsertImage(string path, Button buttonName)
+        {
+            // Wyświetlenie obrazka o określonej ścieżce na określonym przycisku
+            BitmapImage bitimg = new BitmapImage();
+            bitimg.BeginInit();
+            bitimg.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitimg.EndInit();
+            Image img = new Image();
+            img.Stretch = Stretch.Uniform;
+            img.Source = bitimg;
+            buttonName.Content = img;
         }
 
         private void BSettings_Click(object sender, RoutedEventArgs e)
