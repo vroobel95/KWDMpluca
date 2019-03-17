@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using sitk = itk.simple;
+using System.IO;
 
 namespace KWDMpluca
 {
@@ -32,6 +35,19 @@ namespace KWDMpluca
             string klientAET = "KLIENTL";
             string serwerAET = "ARCHIWUM";
             bool stan = gdcm.CompositeNetworkFunctions.CEcho(serwerIP, serwerPort, klientAET, serwerAET);
+            string pathToSeries = "C:/Users/chmur/Desktop/BazaKWDM/RIDERLungCT/RIDER-1286684383/02-26-2007-85682/100-45297";
+
+            // Wczytanie serii obrazow
+            LCheck.Content = "Wczytanie obrazu... czekaj";
+            //... TODO
+            var seriesIDs = sitk.ImageSeriesReader.GetGDCMSeriesIDs(pathToSeries);
+
+            foreach (var item in seriesIDs)
+            {
+                Console.WriteLine(item);
+            }
+            sitk.VectorString fnames1 = sitk.ImageSeriesReader.GetGDCMSeriesFileNames(pathToSeries, seriesIDs[0]);
+
             LCheck.Content = "Przeszło";
         }
     }
