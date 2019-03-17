@@ -24,5 +24,15 @@ namespace KWDMpluca
         {
             InitializeComponent();
         }
+
+        private void BSettings_Click(object sender, RoutedEventArgs e)
+        {
+            string serwerIP = "127.0.0.0.1";
+            ushort serwerPort = 10010;
+            string klientAET = "KLIENTL";
+            string serwerAET = "ARCHIWUM";
+            bool stan = gdcm.CompositeNetworkFunctions.CEcho(serwerIP, serwerPort, klientAET, serwerAET);
+            LCheck.Content = "Przeszło";
+        }
     }
 }

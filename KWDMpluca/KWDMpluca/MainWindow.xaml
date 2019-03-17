@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="BSettings" Content="Ustawienia" HorizontalAlignment="Left" Margin="53,39,0,0" VerticalAlignment="Top" Width="129" Height="43" Click="BSettings_Click"/>
+        <Label x:Name="LCheck" Content="Label" HorizontalAlignment="Left" Height="43" Margin="244,39,0,0" VerticalAlignment="Top" Width="137"/>
+
     </Grid>
 </Window>
