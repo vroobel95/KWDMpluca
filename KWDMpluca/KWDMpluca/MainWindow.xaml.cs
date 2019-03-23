@@ -36,7 +36,7 @@ namespace KWDMpluca
             InsertImage("image/print.png", BPrint);
             
         }
-        private void InsertImage(string path, Button buttonName)
+        public void InsertImage(string path, Button buttonName)
         {
             // Wyświetlenie obrazka o określonej ścieżce na określonym przycisku
             BitmapImage bitimg = new BitmapImage();
@@ -51,25 +51,27 @@ namespace KWDMpluca
 
         private void BSettings_Click(object sender, RoutedEventArgs e)
         {
-            string serwerIP = "127.0.0.0.1";
-            ushort serwerPort = 10010;
-            string klientAET = "KLIENTL";
-            string serwerAET = "ARCHIWUM";
-            bool stan = gdcm.CompositeNetworkFunctions.CEcho(serwerIP, serwerPort, klientAET, serwerAET);
-            string pathToSeries = "C:/Users/chmur/Desktop/BazaKWDM/RIDERLungCT/RIDER-1286684383/02-26-2007-85682/100-45297";
+            //string serwerIP = "127.0.0.0.1";
+            //ushort serwerPort = 10010;
+            //string klientAET = "KLIENTL";
+            //string serwerAET = "ARCHIWUM";
+            //bool stan = gdcm.CompositeNetworkFunctions.CEcho(serwerIP, serwerPort, klientAET, serwerAET);
+            //string pathToSeries = "C:/Users/chmur/Desktop/BazaKWDM/RIDERLungCT/RIDER-1286684383/02-26-2007-85682/100-45297";
 
-            // Wczytanie serii obrazow
-            LCheck.Content = "Wczytanie obrazu... czekaj";
-            //... TODO
-            var seriesIDs = sitk.ImageSeriesReader.GetGDCMSeriesIDs(pathToSeries);
+            //// Wczytanie serii obrazow
+            //LCheck.Content = "Wczytanie obrazu... czekaj";
+            ////... TODO
+            //var seriesIDs = sitk.ImageSeriesReader.GetGDCMSeriesIDs(pathToSeries);
 
-            foreach (var item in seriesIDs)
-            {
-                Console.WriteLine(item);
-            }
-            sitk.VectorString fnames1 = sitk.ImageSeriesReader.GetGDCMSeriesFileNames(pathToSeries, seriesIDs[0]);
+            //foreach (var item in seriesIDs)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //sitk.VectorString fnames1 = sitk.ImageSeriesReader.GetGDCMSeriesFileNames(pathToSeries, seriesIDs[0]);
 
-            LCheck.Content = "Przeszło";
+            //LCheck.Content = "Przeszło";
+            Settings win2 = new Settings();
+            win2.Show();
         }
     }
 }
